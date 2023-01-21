@@ -8,6 +8,7 @@ import ru.hogwarts.school3.model.Student;
 import ru.hogwarts.school3.service.StudentService;
 
 import java.util.Collection;
+
 @RestController
 @RequestMapping("student")
 public class StudentController {
@@ -15,6 +16,11 @@ public class StudentController {
 
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
+    }
+
+    @PostMapping //POST http://localhost:8080/students
+    public Student createStudent(@RequestBody Student student) {
+        return StudentService.createStudent(student);
     }
 
     @GetMapping("{id}") //GET http://localhost:8080/students/23
@@ -28,23 +34,14 @@ public class StudentController {
 
     @GetMapping //GET http://localhost:8080/students
     public ResponseEntity<Collection<Student>> getAllStudents() {
-        return ResponseEntity.ok(studentService.getAllStudents);
-    }
 
+        return ResponseEntity.ok(studentService.getAllStudents());
+    }
 //    @GetMapping //GET http://localhost:8080/students/age
-//    public ResponseEntity<Student> filtrStudentAge(@PathVariable int age) {
-//        int ageStudentFilter;
-//        Student student = studentService.findStudentAge(age);
-//        if (age==0){
-//            return ResponseEntity.notFound().build();
-//        }
-//        return ResponseEntity.ok(student);
+//    public ResponseEntity<Collection<Student>> filterStudentAge() {
+//        return filterStudentAge();
 //    }
 
-    @PostMapping //POST http://localhost:8080/students
-    public Student createStudent(@RequestBody Student student) {
-        return StudentService.createStudent(student);
-    }
 
     @PutMapping //PUT http://localhost:8080/students
     public ResponseEntity<Student> editStudent(@RequestBody Student student) {

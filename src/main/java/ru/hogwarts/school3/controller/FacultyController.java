@@ -16,8 +16,12 @@ public class FacultyController {
     public FacultyController(FacultyService facultyService) {
         this.facultyService = facultyService;
     }
+    @PostMapping //POST http://localhost:8080/facultys
+    public Faculty createFaculty(@RequestBody Faculty faculty) {
+        return FacultyService.createFaculty(faculty);
+    }
 
-    @GetMapping("{id}") //GET http://localhost:8080/facultys
+    @GetMapping("{id}") //GET http://localhost:8080/facultys/23
     public ResponseEntity<Faculty> getfacultyInfo(@PathVariable long id){
         Faculty faculty= facultyService.findFaculty(id);
         if (faculty==null){
@@ -27,9 +31,7 @@ public class FacultyController {
     }
     @GetMapping //GET http://localhost:8080/facultys
     public  ResponseEntity<Collection<Faculty>> getAllfacultys(){
-
-        /////////        ///////////////
-        return ResponseEntity.ok(facultyService.getAllfacultys);
+        return ResponseEntity.ok(facultyService.getAllfacultys());
     }
 
 //    //FILTER http://localhost:8080/facultys/color
@@ -42,10 +44,7 @@ public class FacultyController {
 //        return ResponseEntity.ok(faculty);
 //    }
 
-    @PostMapping //POST http://localhost:8080/facultys
-    public Faculty createFaculty(@RequestBody Faculty faculty) {
-        return FacultyService.createFaculty(faculty);
-    }
+
 
     @PutMapping //PUT http://localhost:8080/facultys
     public ResponseEntity<Faculty> editFaculty(@RequestBody Faculty faculty) {
