@@ -1,3 +1,4 @@
+
 package ru.hogwarts.school3.controller;
 
 import org.springframework.http.HttpStatus;

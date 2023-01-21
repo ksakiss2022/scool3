@@ -1,3 +1,4 @@
+
 package ru.hogwarts.school3.model;
 
 import java.util.Objects;
