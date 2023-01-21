@@ -14,9 +14,11 @@ import static javax.swing.UIManager.get;
 public class FacultyService {
     private static final HashMap<Long, Faculty> facultys = new HashMap<>();
 
-    public Collection<Faculty> getAllfacultys(){
+    public Collection<Faculty> getAllfacultys() {
         return facultys.values();
-    };
+    }
+
+    ;
 
 
     private static long lastId = 0;

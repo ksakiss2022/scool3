@@ -9,10 +9,12 @@ import ru.hogwarts.school3.service.StudentService;
 
 import java.util.Collection;
 
+
 @RestController
 @RequestMapping("student")
 public class StudentController {
     private final StudentService studentService;
+    private int age;
 
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
@@ -37,11 +39,6 @@ public class StudentController {
 
         return ResponseEntity.ok(studentService.getAllStudents());
     }
-//    @GetMapping //GET http://localhost:8080/students/age
-//    public ResponseEntity<Collection<Student>> filterStudentAge() {
-//        return filterStudentAge();
-//    }
-
 
     @PutMapping //PUT http://localhost:8080/students
     public ResponseEntity<Student> editStudent(@RequestBody Student student) {
@@ -57,4 +54,13 @@ public class StudentController {
         return studentService.deletStudent(id);
     }
 
+//    @PutMapping //GET http://localhost:8080/students/filterAge
+//    public ResponseEntity<Collection<Student>> filterStudentAge(@PathVariable int age) {
+//        Student student = studentService.findStudent(age);
+//        if (student == null) {
+//            return ResponseEntity.notFound().build();
+//        }
+//        return ResponseEntity.ok(studentService.getAllStudents());}
+
 }
+

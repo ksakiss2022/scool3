@@ -15,9 +15,6 @@ public class StudentService {
         return students.values();
     }
 
-    ;
-
-
     private static long lastId = 0;
 
     public static Student createStudent(Student student) {
@@ -41,7 +38,12 @@ public class StudentService {
     }
 
 
-    public Collection<Student> filterStudentAge(int age) {
-        return students.values().stream().filter(e -> e.getAge() == age).toList();
-    }
+//    public Collection<Student> filterStudentAge(int age) {
+//        return students.findAll().stream().filter(e -> e.getAge() == age).toList();
+//    }
+//    public Student filterStudentsByAge(int age) {
+//        return students.get(age);
+//    }
+
+
 }

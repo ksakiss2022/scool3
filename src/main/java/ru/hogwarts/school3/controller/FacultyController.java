@@ -8,6 +8,7 @@ import ru.hogwarts.school3.model.Faculty;
 import ru.hogwarts.school3.service.FacultyService;
 
 import java.util.Collection;
+
 @RestController
 @RequestMapping("faculty")
 public class FacultyController {
@@ -16,21 +17,23 @@ public class FacultyController {
     public FacultyController(FacultyService facultyService) {
         this.facultyService = facultyService;
     }
+
     @PostMapping //POST http://localhost:8080/facultys
     public Faculty createFaculty(@RequestBody Faculty faculty) {
         return FacultyService.createFaculty(faculty);
     }
 
     @GetMapping("{id}") //GET http://localhost:8080/facultys/23
-    public ResponseEntity<Faculty> getfacultyInfo(@PathVariable long id){
-        Faculty faculty= facultyService.findFaculty(id);
-        if (faculty==null){
+    public ResponseEntity<Faculty> getfacultyInfo(@PathVariable long id) {
+        Faculty faculty = facultyService.findFaculty(id);
+        if (faculty == null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(faculty);
     }
+
     @GetMapping //GET http://localhost:8080/facultys
-    public  ResponseEntity<Collection<Faculty>> getAllfacultys(){
+    public ResponseEntity<Collection<Faculty>> getAllfacultys() {
         return ResponseEntity.ok(facultyService.getAllfacultys());
     }
 
@@ -45,7 +48,6 @@ public class FacultyController {
 //    }
 
 
-
     @PutMapping //PUT http://localhost:8080/facultys
     public ResponseEntity<Faculty> editFaculty(@RequestBody Faculty faculty) {
         Faculty foundFaculty = facultyService.editFaculty(faculty);
@@ -54,8 +56,9 @@ public class FacultyController {
         }
         return ResponseEntity.ok(foundFaculty);
     }
+
     @DeleteMapping("{id}") //DELETE http://localhost:8080/facultys/23
-    public Faculty deletFaculty(@PathVariable Long id){
+    public Faculty deletFaculty(@PathVariable Long id) {
         return facultyService.deletFaculty(id);
     }
 }
