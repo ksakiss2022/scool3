@@ -3,6 +3,7 @@ package ru.hogwarts.school3.service;
 
 import org.springframework.stereotype.Service;
 import ru.hogwarts.school3.model.Faculty;
+import ru.hogwarts.school3.model.Student;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -43,8 +44,9 @@ public class FacultyService {
         return facultys.remove(id);
     }
 
-//    public List<Faculty> filtrFacultyColor(String color) {
-//        return facultys.findAll().streame().filter(e->e.getColor()=color).toList();
-//    }
+
+    public Faculty filterFacultyByColor(String color) {
+        return facultys.get(color);
+    }
 
 }

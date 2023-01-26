@@ -54,13 +54,14 @@ public class StudentController {
         return studentService.deletStudent(id);
     }
 
-//    @PutMapping //GET http://localhost:8080/students/filterAge
-//    public ResponseEntity<Collection<Student>> filterStudentAge(@PathVariable int age) {
-//        Student student = studentService.findStudent(age);
-//        if (student == null) {
-//            return ResponseEntity.notFound().build();
-//        }
-//        return ResponseEntity.ok(studentService.getAllStudents());}
+    @GetMapping("{age}") //GET http://localhost:8080/students/22
+    public ResponseEntity<Student> filterStudentByAge(@PathVariable int age) {
+        Student student = studentService.filterStudentByAge(age);
+        if (student == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(student);
+    }
 
 }
 

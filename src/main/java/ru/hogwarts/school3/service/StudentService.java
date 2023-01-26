@@ -6,6 +6,8 @@ import ru.hogwarts.school3.model.Student;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
+
 
 @Service
 public class StudentService {
@@ -37,13 +39,7 @@ public class StudentService {
         return students.remove(id);
     }
 
-
-//    public Collection<Student> filterStudentAge(int age) {
-//        return students.findAll().stream().filter(e -> e.getAge() == age).toList();
-//    }
-//    public Student filterStudentsByAge(int age) {
-//        return students.get(age);
-//    }
-
-
+    public Student filterStudentByAge(int age) {
+        return students.get(age);
+    }
 }
