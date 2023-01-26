@@ -53,7 +53,7 @@ public class FacultyController {
         return facultyService.deletFaculty(id);
     }
 
-    @GetMapping("{color}") //GET http://localhost:8080/facultys
+    @GetMapping("{color}") //GET http://localhost:8080/faculty/color/blue
     public ResponseEntity<Faculty> filterFacultyByColor(@PathVariable String color) {
         Faculty faculty = facultyService.filterFacultyByColor(color);
         if (faculty == null) {

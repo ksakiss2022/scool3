@@ -54,7 +54,7 @@ public class StudentController {
         return studentService.deletStudent(id);
     }
 
-    @GetMapping("{age}") //GET http://localhost:8080/students/22
+    @GetMapping("{age}") //GET http://localhost:8080/student/age/22
     public ResponseEntity<Student> filterStudentByAge(@PathVariable int age) {
         Student student = studentService.filterStudentByAge(age);
         if (student == null) {
