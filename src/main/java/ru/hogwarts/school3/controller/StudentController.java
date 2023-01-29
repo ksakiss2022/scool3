@@ -8,13 +8,13 @@ import ru.hogwarts.school3.model.Student;
 import ru.hogwarts.school3.service.StudentService;
 
 import java.util.Collection;
+import java.util.List;
 
 
 @RestController
-@RequestMapping("student")
+@RequestMapping("students")
 public class StudentController {
     private final StudentService studentService;
-    private int age;
 
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
@@ -25,7 +25,7 @@ public class StudentController {
         return StudentService.createStudent(student);
     }
 
-    @GetMapping("{id}") //GET http://localhost:8080/students/23
+    @GetMapping("{id}") //GET http://localhost:8080/students
     public ResponseEntity<Student> getStudentInfo(@PathVariable long id) {
         Student student = studentService.findStudent(id);
         if (student == null) {
@@ -54,14 +54,9 @@ public class StudentController {
         return studentService.deletStudent(id);
     }
 
-    @GetMapping("{age}") //GET http://localhost:8080/student/age/22
-    public ResponseEntity<Student> filterStudentByAge(@PathVariable int age) {
-        Student student = studentService.filterStudentByAge(age);
-        if (student == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(student);
+    @GetMapping("/age/{age}") //GET http://localhost:8080/student/age/22
+    public List<Student> filterStudentByAge(@PathVariable int age) {
+        return studentService.findByAge(age);
     }
-
 }
 

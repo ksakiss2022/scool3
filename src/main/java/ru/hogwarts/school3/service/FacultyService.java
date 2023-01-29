@@ -3,26 +3,21 @@ package ru.hogwarts.school3.service;
 
 import org.springframework.stereotype.Service;
 import ru.hogwarts.school3.model.Faculty;
-import ru.hogwarts.school3.model.Student;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
-import static javax.swing.UIManager.get;
-
 @Service
 public class FacultyService {
+
+
     private static final HashMap<Long, Faculty> facultys = new HashMap<>();
+    private static long lastId = 0;
 
     public Collection<Faculty> getAllfacultys() {
         return facultys.values();
     }
-
-    ;
-
-
-    private static long lastId = 0;
 
     public static Faculty createFaculty(Faculty faculty) {
         faculty.setId(++lastId);
@@ -45,8 +40,7 @@ public class FacultyService {
     }
 
 
-    public Faculty filterFacultyByColor(String color) {
-        return facultys.get(color);
+    public List<Faculty> findByByColor(String color) {
+        return (List<Faculty>) facultys.get(color);
     }
-
 }
