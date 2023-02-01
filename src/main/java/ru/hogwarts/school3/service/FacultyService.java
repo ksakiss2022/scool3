@@ -3,7 +3,7 @@ package ru.hogwarts.school3.service;
 
 import org.springframework.stereotype.Service;
 import ru.hogwarts.school3.model.Faculty;
-
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -40,7 +40,14 @@ public class FacultyService {
     }
 
 
-    public List<Faculty> findByByColor(String color) {
-        return (List<Faculty>) facultys.get(color);
+    public List<Faculty> findByColor(String color) {
+        List<Faculty> result = new ArrayList<>();
+        for (Faculty faculty:
+             facultys.values()) {
+            if(faculty.getColor()!=null && faculty.getColor().equals(color)){
+                result.add(faculty);
+            }
+        }
+        return result;
     }
 }
